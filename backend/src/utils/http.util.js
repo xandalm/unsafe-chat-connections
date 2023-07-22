@@ -1,0 +1,35 @@
+
+// 2xx Success
+const OK = 200;
+const CREATED = 201;
+const ACCEPTED = 202;
+const NO_CONTENT = 201;
+// 4xx Client Error
+const BAD_REQUEST = 400;
+const UNAUTHORIZED = 401;
+const FORBIDDEN = 403;
+const NOT_FOUND = 404;
+const METHOD_NOT_ALLOWED = 405;
+const PAYLOAD_TOO_LARGE = 413;
+// 5xx Server Error
+const INTERNAL_SERVER_ERROR = 500;
+const NOT_IMPLEMENTED = 501;
+
+const HTTP_STATUS = {
+    OK,
+    CREATED,
+    ACCEPTED,
+    NO_CONTENT,
+    BAD_REQUEST,
+    UNAUTHORIZED,
+    FORBIDDEN,
+    NOT_FOUND,
+    METHOD_NOT_ALLOWED,
+    PAYLOAD_TOO_LARGE,
+    INTERNAL_SERVER_ERROR,
+    NOT_IMPLEMENTED
+};
+
+module.exports = {
+    HTTP_STATUS
+}
