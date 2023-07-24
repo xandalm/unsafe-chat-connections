@@ -52,17 +52,26 @@ const HMACSHA256 = (data) => {
  */
 const generateJWT = function (payload, config) {
     /*
-        TO DO
+        jit (***unique*** jwt id)
+        iss (issuer)
+        aud (audience)
+        iat (issued at time)
+        exp (expiration time)
+
+        TODO
         - validate claims according to IANA JSON Web Token Registry
     */
-    if(config?.expirationTime && !((Number.isFinite(config?.expirationTime) && config?.expirationTime >= 1)))
-        throw new TypeError("The 'expirationTime' config field must be finite and bigger than or equal to 1 minute");
-    const exp =  config?.expirationTime * 60;
     if(!isJSON(payload))
         throw new TypeError("The 'payload' must be JSON object");
+    var exp;
+    if(config?.expirationTime) {
+        if(!((Number.isFinite(config?.expirationTime) && config?.expirationTime >= 1)))
+            throw new TypeError("The 'expirationTime' config field must be finite and bigger than or equal to 1 minute");
+        exp = config.expirationTime * 60;
+    }
     const iat = Math.floor(Date.now() / 1000);
     payload = {
-        jit: randomUUID(),
+        jit: randomUUID(), 
         iss: iss,
         aud: aud,
         ...payload,
